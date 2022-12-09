@@ -1,4 +1,5 @@
 import classes from "./index.module.css";
+import Card from "../../UI/Card";
 
 const DUMMY_MEALS = [
     {
@@ -27,9 +28,14 @@ const DUMMY_MEALS = [
     },
 ];
 
-const AvailableMeals = props => {
+const AvailableMeals = () => {
+    const mealsItems = DUMMY_MEALS.map(meal => <li key={meal.id}>{meal.id}</li>);
     return <section className={classes.meals}>
-        123
+        <Card>
+            <ul>
+                {mealsItems}
+            </ul>
+        </Card>
     </section>
 }
 
