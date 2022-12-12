@@ -6,7 +6,6 @@ const Meals = props => {
     return <>
         <MealsSummary/>
         <AvailableMeals/>
-        <Cart/>
     </>
 }
 
