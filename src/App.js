@@ -2,6 +2,7 @@ import Header from "./Components/Layout/Header";
 import Meals from "./Components/Meals";
 import Cart from "./Components/Cart/Cart";
 import {useState} from "react";
+import CartContextProvider from "./store/CartContextProvider";
 
 
 function App() {
@@ -14,11 +15,11 @@ function App() {
         setShowCart(false);
     }
     return (
-        <>
+        <CartContextProvider>
             {showCart && <Cart onClose={hideCartHandler}/>}
             <Header onShowCart={showCartHandler}/>
             <Meals/>
-        </>
+        </CartContextProvider>
     );
 }
 
