@@ -14,6 +14,7 @@ function App() {
     const hideCartHandler = () => {
         setShowCart(false);
     }
+
     return (
         <CartContextProvider>
             {showCart && <Cart onClose={hideCartHandler}/>}
