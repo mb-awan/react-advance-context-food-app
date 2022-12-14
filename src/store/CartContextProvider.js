@@ -24,11 +24,6 @@ const CartContextProvider = props => {
         }
     };
 
-    const addItemToCartByIdHandler = id => {
-      const item = items.find(item => item.id === id);
-      console.log(item);
-    }
-
     const removeItemFromCartHandler = id => {
     };
 
@@ -36,7 +31,6 @@ const CartContextProvider = props => {
         items,
         totalAmount: 0,
         addItemToCart: addItemToCartHandler,
-        addItemToCartById: addItemToCartByIdHandler,
         removeItemFromCart: removeItemFromCartHandler
     }
     return <CartContext.Provider value={cartValue}>{props.children}</CartContext.Provider>

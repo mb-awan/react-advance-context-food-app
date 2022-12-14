@@ -15,7 +15,12 @@ const Cart = props => {
                 return total + (Number(item.price) * Number(item.amount));
             },0)
         })
-    }, cartCtx.items);
+    }, [cartCtx.items ,cartItems, cartTotalPrice]);
+
+    const addToCartHandler = (item) =>  {
+        item.amount = 1;
+        cartCtx.addItemToCart(item);
+    }
 
     return <Modal onClose={props.onClose}>
         <ul className={classes['cart-items']}>
@@ -29,7 +34,7 @@ const Cart = props => {
                         </div>
                         <div>
                             <button>-</button>
-                            <button>+</button>
+                            <button onClick={() => addToCartHandler(item)}>+</button>
                         </div>
                     </div>
                     <hr/>

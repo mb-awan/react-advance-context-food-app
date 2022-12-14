@@ -10,7 +10,7 @@ const Index = props => {
     }
     useEffect(()=> {
         props.onSendAmount(enteredAmount);
-    }, [enteredAmount]);
+    }, [enteredAmount, props]);
 
     return (
         <div className={classes.input}>
