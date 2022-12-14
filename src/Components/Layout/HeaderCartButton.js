@@ -1,6 +1,6 @@
 import classes from './HeaderCartButton.module.css';
 import CartIcon from "../Cart/CartIcon";
-import {useContext} from "react";
+import {useContext, useEffect, useState} from "react";
 import CartContext from "../../store/cart-context";
 
 const HeaderCartButton = props => {
@@ -9,7 +9,23 @@ const HeaderCartButton = props => {
         return cartTotal+item.amount;
     }, 0);
 
-    return <button className={classes.button} onClick={props.onClick}>
+    const [newItemAddedToCart, setNewItemAddedToCart] = useState(false);
+    const btnClasses = `${classes.button} ${newItemAddedToCart && classes.bump}`
+
+    useEffect(()=> {
+        if(cartCtx.items.length === 0) return;
+        setNewItemAddedToCart(true);
+
+        const timer = setTimeout(()=> {
+            setNewItemAddedToCart(false);
+        }, 300)
+
+        return () => {
+            clearTimeout(timer);
+        }
+    }, [cartCtx.items])
+
+    return <button className={btnClasses} onClick={props.onClick}>
         <span className={classes.icon}>
             <CartIcon/>
         </span>
