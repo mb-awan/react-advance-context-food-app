@@ -1,7 +1,5 @@
 import classes from './Cart.module.css';
 import Modal from "../UI/Modal/Modal";
-import {useContext, useEffect} from "react";
-import cartContext from "../../store/cart-context";
 
 const cartItems =
     <ul className={classes['cart-items']}>
@@ -10,8 +8,6 @@ const cartItems =
     </ul>;
 
 const Cart = props => {
-    const cartCtx = useContext(cartContext);
-
     return <Modal onClose={props.onClose}>
         {cartItems}
         <div className={classes.total}>
