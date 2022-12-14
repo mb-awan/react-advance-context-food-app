@@ -1,5 +1,7 @@
 import classes from './Cart.module.css';
 import Modal from "../UI/Modal/Modal";
+import {useContext} from "react";
+import CartContext from "../../store/cart-context";
 
 const cartItems =
     <ul className={classes['cart-items']}>
@@ -8,11 +10,12 @@ const cartItems =
     </ul>;
 
 const Cart = props => {
+    const cartCtx = useContext(CartContext);
     return <Modal onClose={props.onClose}>
         {cartItems}
         <div className={classes.total}>
             <span>Total Amount</span>
-            <span>34.43</span>
+            <span>{cartCtx.totalAmount}</span>
         </div>
         <div className={classes.actions}>
             <button className={classes['button--alt']} onClick={props.onClose}>Close</button>
